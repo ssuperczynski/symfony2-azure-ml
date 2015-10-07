@@ -9,6 +9,9 @@
 /composer.phar
 /vendor/
 /web/bundles/
+/web/css/
+/web/js/
+/web/fonts/
 .idea
 node_modules/
 
