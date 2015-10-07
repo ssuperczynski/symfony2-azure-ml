@@ -1,0 +1,6 @@
+dashboard:
+    path:     /
+    defaults: { _controller: MainBundle:Default:dashboard }
+wine:
+    path:     /wine
+    defaults: { _controller: MainBundle:Default:wine }
