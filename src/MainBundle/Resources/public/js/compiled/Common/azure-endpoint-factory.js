@@ -21,7 +21,7 @@
             "Authorization": 'Bearer ' + TOKEN
         };
         self.get = function () {
-            return $http.post("http://www.mocky.io/v2/561a654a100000892168d562", {});
+            return $http.get("http://www.mocky.io/v2/561a654a100000892168d562");
         };
 
         return self;

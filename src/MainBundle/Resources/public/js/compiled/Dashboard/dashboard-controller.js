@@ -8,8 +8,9 @@
     function DashboardCtrl($scope, endpointFactory) {
 
         $scope.test = function () {
-            return endpointFactory.get().then(function (response) {
-                return console.log(response.data);
+            mixpanel.track("post send");
+            endpointFactory.get().then(function (response) {
+                console.log(response.data);
             });
         };
     }
