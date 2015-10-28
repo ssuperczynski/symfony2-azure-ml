@@ -1,4 +1,4 @@
-all: composer-install clear-cache bower-install compile test
+all: install clear-cache bower-install compile test
 
 db:
 	php app/console doctrine:database:drop --force
@@ -15,7 +15,8 @@ clear-cache:
 	php app/console cache:clear
 	php app/console cache:clear --env=prod
 
-composer-install:
+install:
+	npm install
 	composer install
 
 compile:
@@ -23,9 +24,6 @@ compile:
 	php app/console assets:install web
 	mkdir -p web/css && cp -au bower_components/bootstrap/dist/css/bootstrap.css.map web/css/
 	mkdir -p web/fonts && cp -au bower_components/bootstrap/fonts/* web/fonts/
-
-watch:
-	php app/console assetic:watch
 
 bower-install:
 	bower prune
