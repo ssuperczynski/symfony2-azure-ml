@@ -1,4 +1,4 @@
-all: install clear-cache bower-install compile test
+all: install clear-cache bower-install gulp-install compile test
 
 db:
 	php app/console doctrine:database:drop --force
@@ -22,17 +22,25 @@ install:
 compile:
 	php app/console assetic:dump
 	php app/console assets:install web
-	mkdir -p web/css && cp -au bower_components/bootstrap/dist/css/bootstrap.css.map web/css/
-	mkdir -p web/fonts && cp -au bower_components/bootstrap/fonts/* web/fonts/
+	#mkdir -p web/css && cp -au bower_components/bootstrap/dist/css/bootstrap.css.map web/css/
+	#mkdir -p web/fonts && cp -au bower_components/bootstrap/fonts/* web/fonts/
 
 bower-install:
 	bower prune
 	bower install
 
+gulp-install:
+	gulp default
+
 permissions:
 	HTTPDUSER=`ps aux | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1`
 	sudo setfacl -R -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX app/cache app/logs
 	sudo setfacl -dR -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX app/cache app/logs
+
+phpunit-install:
+	curl https://phar.phpunit.de/phpunit.phar -o phpunit.phar
+	chmod +x phpunit.phar
+	mv phpunit.phar /usr/local/bin/phpunit
 
 test:
 	phpunit -c app/
