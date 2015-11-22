@@ -1,4 +1,4 @@
-all: install clear-cache bower-install gulp-install compile test
+all: install clear-cache bower-install gulp compile test
 
 db:
 	php app/console doctrine:database:drop --force
@@ -29,7 +29,7 @@ bower-install:
 	bower prune
 	bower install
 
-gulp-install:
+gulp:
 	gulp default
 
 permissions:

@@ -3,7 +3,7 @@
 (function () {
     'use strict';
 
-    var app = angular.module('ml', []);
+    var app = angular.module('ml', ['ngNotify']);
 
     app.config(['$interpolateProvider', function ($interpolateProvider) {
         $interpolateProvider.startSymbol('[[');

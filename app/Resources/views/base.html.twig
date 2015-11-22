@@ -11,6 +11,7 @@
     {% block stylesheets %}
         {% stylesheets
         '%kernel.root_dir%/../bower_components/bootstrap/dist/css/bootstrap.min.css'
+        '%kernel.root_dir%/../bower_components/ng-notify/dist/ng-notify.min.css'
         '@MainBundle/Resources/public/css/admin.css' %}
         <link rel="stylesheet" href="{{ asset_url }}"/>
         {% endstylesheets %}
@@ -59,6 +60,7 @@
     {% javascripts
     '%kernel.root_dir%/../bower_components/jquery/dist/jquery.js'
     '%kernel.root_dir%/../bower_components/angular/angular.js'
+    '%kernel.root_dir%/../bower_components/ng-notify/dist/ng-notify.min.js'
     'js/compiled/angular-compiled.js'
 
     %}
