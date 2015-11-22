@@ -34,14 +34,10 @@
                                 <h4>[[mushroom.capColor]]</h4>
                             </td>
                             <td>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" checked="" ng-model="mushroom.odor" disabled>
-                                        <span class="checkbox-material">
-                                            <span class="check"></span>
-                                        </span>
-                                    </label>
-                                </div>
+                                <h4>
+                                    <span ng-show="mushroom.odor">YES</span>
+                                    <span ng-hide="mushroom.odor">NO</span>
+                                </h4>
                             </td>
                             <td>
                                 <h4>[[ mushroom.gillColor ]]</h4>

@@ -22,23 +22,10 @@ class MushroomQueueService
     }
 
     /**
-     * @param int $userId
-     * @param string $time
-     * @param int $range
-     * @param int $amount
+     * @param \stdClass $content
      */
-    public function process($userId, $time, $range, $amount)
+    public function process($content)
     {
-        $data = [
-            'user' => 1,
-            'time' => (new \DateTime())->format('Y-m-d H:i:s'),
-            'range' => 2,
-            'amount' => 222
-        ];
-        $i = 10;
-        while($i > 1) {
-            $this->producer->publish(json_encode($data));
-            $i--;
-        }
+        $this->producer->publish(json_encode($content->payload));
     }
 }

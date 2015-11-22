@@ -23,7 +23,7 @@ class QueueMushroomCommand  extends ContainerAwareCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $this->getContainer()->get('mushroom_queue')->process(1, "2015-11-11 23:23:23", 1, 1);
+        $this->getContainer()->get('mushroom_queue')->process(1);
         echo 'Queued'.PHP_EOL;
     }
 }

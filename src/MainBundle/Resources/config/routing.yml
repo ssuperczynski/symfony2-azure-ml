@@ -4,3 +4,7 @@ dashboard:
 wine:
     path:     /wine
     defaults: { _controller: MainBundle:Default:wine }
+producer.send.mushrooms:
+    path:     /mushrooms
+    defaults: { _controller: MainBundle:Mushroom:send }
+    methods:  [PUT]

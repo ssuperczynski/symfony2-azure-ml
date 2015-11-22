@@ -23,7 +23,8 @@
         "ktamas77/firebase-php": "~2.0"
     },
     "require-dev": {
-        "sensio/generator-bundle": "~2.3"
+        "sensio/generator-bundle": "~2.3",
+        "escapestudios/symfony2-coding-standard": "~2.0"
     },
     "scripts": {
         "post-install-cmd": [

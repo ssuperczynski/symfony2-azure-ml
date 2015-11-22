@@ -8,7 +8,6 @@
     function DashboardCtrl($scope, DashboardFactory, ngNotify, $firebaseArray) {
 
         $scope.send = (selected) => {
-            mixpanel.track("mushrooms", {selected: $scope.selected});
             ngNotify.set('Message queued', {
                 theme: 'pastel',
                 position: 'bottom',
@@ -20,7 +19,12 @@
         var ref = new Firebase("https://azureml.firebaseio.com/mushrooms");
         $scope.mushrooms = $firebaseArray(ref);
         $scope.selected = {
-            edible: "edible"
+            edible: "edible",
+            capShape: "bell",
+            capColor: "red",
+            odor: false,
+            gillColor: "red",
+            stalkColor: "yellow"
         };
 
         $scope.types = [

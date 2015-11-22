@@ -2,14 +2,13 @@ angular
     .module('ml')
     .factory('DashboardFactory', DashboardFactory);
 
-DashboardFactory.$inject = ['$http'];
+DashboardFactory.$inject = ['$http', 'BASE_END_POINT'];
 
-function DashboardFactory($http) {
+function DashboardFactory($http, BASE_END_POINT) {
     var self = this;
 
     self.send = function (selected) {
-        console.info(selected)
-        //return $http.post("", selected).then(() => console.info("queued"));
+        return $http.put(BASE_END_POINT + "/mushrooms", {payload: selected}).then((response) => console.info(response));
     };
 
     return self;

@@ -33,7 +33,7 @@ class MushroomSaveService implements ConsumerInterface
      */
     public function execute(AMQPMessage $msg)
     {
-        $content = json_decode($msg->body);
+        $data = json_decode($msg->body);
         $mock = <<<JSON
 {
   "Inputs": {
@@ -48,12 +48,12 @@ class MushroomSaveService implements ConsumerInterface
       ],
       "Values": [
         [
-          "edible",
-          "bell",
-          "red",
-          "1",
-          "red",
-          "red"
+            "$data->edible",
+            "$data->capShape",
+            "$data->capColor",
+            "$data->odor",
+            "$data->gillColor",
+            "$data->stalkColor",
         ]
       ]
     }
@@ -83,6 +83,9 @@ JSON;
         }
     }
 
+    /**
+     * @param $content
+     */
     private function sendToFirebase($content)
     {
         $firebase = new FirebaseLib(self::DEFAULT_URL, self::DEFAULT_TOKEN);

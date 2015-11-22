@@ -1,10 +1,10 @@
 old_sound_rabbit_mq:
     connections:
         default:
-            host:     '127.0.0.1'
+            host:     127.0.0.1
             port:     5672
-            user:     'admin'
-            password: 'pass'
+            user:     admin
+            password: pass
             vhost:    '/'
             lazy:     false
 #            connection_timeout: 3

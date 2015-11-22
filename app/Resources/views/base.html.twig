@@ -41,10 +41,10 @@
             <div class="sidebar-nav" style="margin-top: 10px;">
                 <ul class="nav" id="side-menu">
                     <li>
-                        <a href="{{ path('dashboard') }}">Dashboard</a>
+                        <a href="{{ path('dashboard') }}">Mushrooms</a>
                     </li>
                     <li>
-                        <a href="{{ path('wine') }}">Wine</a>
+                        <a href="{{ path('wine') }}">Shops</a>
                     </li>
                 </ul>
             </div>
@@ -68,6 +68,12 @@
     %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
+
+    <script>
+        angular
+                .module('configuration', [])
+                .constant('BASE_END_POINT', '{{ app.request.baseUrl }}');
+    </script>
 {% endblock %}
 </body>
 </html>
