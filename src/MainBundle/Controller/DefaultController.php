@@ -10,13 +10,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
  */
 class DefaultController extends Controller
 {
-    public function dashboardAction()
+    public function mushroomAction()
     {
-        return $this->render('MainBundle:Default:dashboard.html.twig');
+        return $this->render('MainBundle:Default:mushroom.html.twig');
     }
 
-    public function wineAction()
+    public function shopAction()
     {
-        return $this->render('MainBundle:Default:wine.html.twig');
+        return $this->render('MainBundle:Default:shop.html.twig');
     }
 }

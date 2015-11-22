@@ -1,9 +1,9 @@
-dashboard:
+mushroom.view:
     path:     /
-    defaults: { _controller: MainBundle:Default:dashboard }
-wine:
-    path:     /wine
-    defaults: { _controller: MainBundle:Default:wine }
+    defaults: { _controller: MainBundle:Default:mushroom }
+shop.view:
+    path:     /shop
+    defaults: { _controller: MainBundle:Default:shop }
 producer.send.mushrooms:
     path:     /mushrooms
     defaults: { _controller: MainBundle:Mushroom:send }

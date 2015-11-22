@@ -1,11 +1,11 @@
 (function () {
     angular
         .module('ml')
-        .controller('DashboardCtrl', DashboardCtrl);
+        .controller('MushroomCtrl', MushroomCtrl);
 
-    DashboardCtrl.$inject = ['$scope', 'DashboardFactory', 'ngNotify', '$firebaseArray'];
+    MushroomCtrl.$inject = ['$scope', 'MushroomFactory', 'ngNotify', '$firebaseArray'];
 
-    function DashboardCtrl($scope, DashboardFactory, ngNotify, $firebaseArray) {
+    function MushroomCtrl($scope, MushroomFactory, ngNotify, $firebaseArray) {
 
         $scope.send = (selected) => {
             ngNotify.set('Message queued', {
@@ -13,7 +13,7 @@
                 position: 'bottom',
                 duration: 1000
             });
-            DashboardFactory.send(selected);
+            MushroomFactory.send(selected);
         };
 
         var ref = new Firebase("https://azureml.firebaseio.com/mushrooms");
