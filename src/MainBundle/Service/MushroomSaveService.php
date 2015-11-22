@@ -3,6 +3,7 @@
 namespace MainBundle\Service;
 
 use Doctrine\ORM\EntityManager;
+use Firebase\FirebaseLib;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ServerException;
@@ -15,6 +16,10 @@ use PhpAmqpLib\Message\AMQPMessage;
  */
 class MushroomSaveService implements ConsumerInterface
 {
+    const DEFAULT_URL = 'https://azureml.firebaseio.com/';
+    const DEFAULT_TOKEN = 'p8JsTwvf6W2QxEpNSecYI69Viw1zy8w1Gz7Hr31Y';
+    const DEFAULT_PATH = '/mushrooms';
+
     /**
      * @param EntityManager $em
      */
@@ -47,16 +52,8 @@ class MushroomSaveService implements ConsumerInterface
           "bell",
           "red",
           "1",
-          "blue",
-          "pink"
-        ],
-        [
-          "edible",
-          "flatten",
           "red",
-          "0",
-          "pink",
-          "yellow"
+          "red"
         ]
       ]
     }
@@ -78,11 +75,30 @@ JSON;
                 'headers' => $headers,
             ]);
 
-
+            $this->sendToFirebase($response->getBody()->getContents());
         } catch (ClientException $e) {
             throw $e;
         } catch (ServerException $e) {
             throw $e;
         }
+    }
+
+    private function sendToFirebase($content)
+    {
+        $firebase = new FirebaseLib(self::DEFAULT_URL, self::DEFAULT_TOKEN);
+        $data = json_decode($content);
+        $array = array_combine($data->Results->output1->value->ColumnNames, $data->Results->output1->value->Values[0]);
+        $formattedArray = [
+            'result' => $array['Scored Labels'],
+            'percent' => $array['Scored Probabilities'],
+            'capColor' => $array['cap-color'],
+            'capShape' => $array['cap-shape'],
+            'edible' => $array['edible'],
+            'gillColor' => $array['gill-color'],
+            'stalkColor' => $array['stalk-color'],
+            'odor' => strtolower($array['odor']),
+        ];
+
+        $firebase->push(self::DEFAULT_PATH, $formattedArray);
     }
 }

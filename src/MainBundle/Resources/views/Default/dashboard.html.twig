@@ -51,8 +51,12 @@
 
                             </td>
                             <td>
-                                <h4 ng-show="mushroom.percent > 0.6"><span class="label label-success">Edible</span></h4>
-                                <h4 ng-hide="mushroom.percent > 0.6"><span class="label label-warning">Poisonous</span></h4>
+                                <h4>
+                                    <span class="label"
+                                          ng-class="mushroom.result == 'edible' ? 'label-success' : 'label-warning' ">
+                                        [[ mushroom.result ]]
+                                    </span>
+                                </h4>
                             </td>
                             <td><h4><b>[[ mushroom.percent ]]</b></h4></td>
                         </tr>
