@@ -35,7 +35,7 @@ class MushroomQueueService
             'range' => 2,
             'amount' => 222
         ];
-        $i = 1000;
+        $i = 10;
         while($i > 1) {
             $this->producer->publish(json_encode($data));
             $i--;
