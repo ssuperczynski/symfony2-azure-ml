@@ -8,7 +8,10 @@
     function DashboardCtrl($scope, endpointFactory, ngNotify) {
 
         $scope.test = () => {
-            mixpanel.track("post send");
+            let rand = ~~(Math.random(1, 100) * 100);
+            mixpanel.track("post send",
+                {"User": rand});
+            console.info(rand);
             ngNotify.set('Message queued', {
                 theme: 'pastel',
                 position: 'bottom',
