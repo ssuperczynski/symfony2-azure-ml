@@ -7,4 +7,12 @@ services:
         class: MainBundle\Service\MushroomSaveService
         arguments:
             - @doctrine.orm.entity_manager
-            - @service_container
+
+    shop_queue:
+        class: MainBundle\Service\ShopQueueService
+        arguments:
+            - @old_sound_rabbit_mq.shop_queue_producer
+    save_shop:
+        class: MainBundle\Service\ShopSaveService
+        arguments:
+            - @doctrine.orm.entity_manager

@@ -8,3 +8,8 @@ producer.send.mushrooms:
     path:     /mushrooms
     defaults: { _controller: MainBundle:Mushroom:send }
     methods:  [PUT]
+
+producer.send.shops:
+    path:     /shops
+    defaults: { _controller: MainBundle:Shop:send }
+    methods:  [PUT]
