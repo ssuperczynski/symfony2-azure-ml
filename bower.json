@@ -24,6 +24,9 @@
     "bootstrap": "~3.3.5",
     "angular": "~1.4.7",
     "angular-route": "~1.4.7",
-    "ng-notify": "~0.7.1"
+    "ng-notify": "~0.7.1",
+    "bootstrap-material-design": "~0.4.4",
+    "firebase": "~2.3.2",
+    "angularfire": "~1.1.3"
   }
 }

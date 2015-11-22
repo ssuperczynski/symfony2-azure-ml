@@ -1,16 +1,109 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-<div ng-controller="DashboardCtrl">
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <h1 class="page-header">Dashboard</h1>
-            <h2>
-                <button class="btn btn-danger" ng-click="test()">
-                    POST
-                </button>
-            </h2>
+    <div ng-controller="DashboardCtrl">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h1 class="page-header">Dashboard</h1>
+            </div>
         </div>
-    </div>
-</div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="well bs-component">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Cap shape</th>
+                            <th>Cap color</th>
+                            <th>Odor</th>
+                            <th>Gill color</th>
+                            <th>Stalk color</th>
+                            <th>Result</th>
+                            <th>%</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="mushroom in mushrooms">
+
+                            <td><h4>[[ $index + 1 ]]</h4></td>
+                            <td>
+                                <h4>[[ mushroom.capShape ]]</h4>
+                            </td>
+                            <td>
+                                <h4>[[mushroom.capColor]]</h4>
+                            </td>
+                            <td>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" checked="" ng-model="mushroom.odor" disabled>
+                                        <span class="checkbox-material">
+                                            <span class="check"></span>
+                                        </span>
+                                    </label>
+                                </div>
+                            </td>
+                            <td>
+                                <h4>[[ mushroom.gillColor ]]</h4>
+                            </td>
+                            <td>
+                                <h4>[[ mushroom.stalkColor ]]</h4>
+
+                            </td>
+                            <td>
+                                <h4 ng-show="mushroom.percent > 0.6"><span class="label label-success">Edible</span></h4>
+                                <h4 ng-hide="mushroom.percent > 0.6"><span class="label label-warning">Poisonous</span></h4>
+                            </td>
+                            <td><h4><b>[[ mushroom.percent ]]</b></h4></td>
+                        </tr>
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <select class="form-control"
+                                        ng-model="selected.capShape"
+                                        ng-options="shape.name as shape.name for shape in shapes">
+                                </select>
+                            </td>
+                            <td>
+                                <select class="form-control"
+                                        ng-model="selected.capColor"
+                                        ng-options="color.name as color.name for color in colors">
+                                </select>
+                            </td>
+                            <td>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" checked="" ng-model="selected.odor">
+                                        <span class="checkbox-material">
+                                            <span class="check"></span>
+                                        </span>
+                                    </label>
+                                </div>
+                            </td>
+                            <td>
+                                <select class="form-control"
+                                        ng-model="selected.gillColor"
+                                        ng-options="color.name as color.name for color in colors">
+                                </select>
+                            </td>
+                            <td>
+                                <select class="form-control"
+                                        ng-model="selected.stalkColor"
+                                        ng-options="color.name as color.name for color in colors">
+                                </select>
+                            </td>
+                            <td>
+                                <button class="btn btn-default btn-raised" ng-click="send(selected)">
+                                    Check
+                                </button>
+                            </td>
+                            <td></td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
 {% endblock %}

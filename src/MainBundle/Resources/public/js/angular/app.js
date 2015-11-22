@@ -2,7 +2,8 @@
     'use strict';
 
     var app = angular.module('ml', [
-        'ngNotify'
+        'ngNotify',
+        'firebase'
     ]);
 
     app.config(['$interpolateProvider', function ($interpolateProvider) {

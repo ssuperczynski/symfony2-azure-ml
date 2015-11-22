@@ -3,26 +3,41 @@
         .module('ml')
         .controller('DashboardCtrl', DashboardCtrl);
 
-    DashboardCtrl.$inject = ['$scope', 'endpointFactory', 'ngNotify'];
+    DashboardCtrl.$inject = ['$scope', 'DashboardFactory', 'ngNotify', '$firebaseArray'];
 
-    function DashboardCtrl($scope, endpointFactory, ngNotify) {
+    function DashboardCtrl($scope, DashboardFactory, ngNotify, $firebaseArray) {
 
-        $scope.test = () => {
-            let rand = ~~(Math.random(1, 100) * 100);
-            mixpanel.track("post send",
-                {"User": rand});
-            console.info(rand);
+        $scope.send = (selected) => {
+            mixpanel.track("mushrooms", {selected: $scope.selected});
             ngNotify.set('Message queued', {
                 theme: 'pastel',
                 position: 'bottom',
                 duration: 1000
             });
-            endpointFactory.get()
-                .then(response => {
-                    console.log(response.data);
-                });
+            DashboardFactory.send(selected);
         };
 
-    }
+        var ref = new Firebase("https://azureml.firebaseio.com/mushrooms");
+        $scope.mushrooms = $firebaseArray(ref);
+        $scope.selected = {
+            edible: "edible"
+        };
 
+        $scope.types = [
+            {name: "edible"},
+            {name: "poisonous"}
+        ];
+
+        $scope.shapes = [
+            {name: "bell"},
+            {name: "flatten"}
+        ];
+
+        $scope.colors = [
+            {name: "pink"},
+            {name: "red"},
+            {name: "yellow"},
+            {name: "brown"}
+        ];
+    }
 }());

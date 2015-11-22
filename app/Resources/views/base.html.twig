@@ -12,7 +12,9 @@
         {% stylesheets
         '%kernel.root_dir%/../bower_components/bootstrap/dist/css/bootstrap.min.css'
         '%kernel.root_dir%/../bower_components/ng-notify/dist/ng-notify.min.css'
-        '@MainBundle/Resources/public/css/admin.css' %}
+        '%kernel.root_dir%/../bower_components/bootstrap-material-design/dist/css/material.css'
+        '@MainBundle/Resources/public/css/admin.css'
+        %}
         <link rel="stylesheet" href="{{ asset_url }}"/>
         {% endstylesheets %}
     {% endblock %}
@@ -25,7 +27,7 @@
 </head>
 <body ng-app="ml">
 <div id="wrapper">
-    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <nav class="navbar" role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
@@ -35,11 +37,8 @@
             </button>
             <a class="navbar-brand" href="{{ path('dashboard') }}">AzureML</a>
         </div>
-
-        <ul class="nav navbar-top-links navbar-right">
-        </ul>
-        <div class="navbar-default sidebar" role="navigation">
-            <div class="sidebar-nav navbar-collapse">
+        <div class="sidebar" role="navigation">
+            <div class="sidebar-nav" style="margin-top: 10px;">
                 <ul class="nav" id="side-menu">
                     <li>
                         <a href="{{ path('dashboard') }}">Dashboard</a>
@@ -61,6 +60,9 @@
     '%kernel.root_dir%/../bower_components/jquery/dist/jquery.js'
     '%kernel.root_dir%/../bower_components/angular/angular.js'
     '%kernel.root_dir%/../bower_components/ng-notify/dist/ng-notify.min.js'
+    '%kernel.root_dir%/../bower_components/bootstrap-material-design/dist/js/material.js'
+    '%kernel.root_dir%/../bower_components/firebase/firebase.js'
+    '%kernel.root_dir%/../bower_components/angularfire/dist/angularfire.js'
     'js/compiled/angular-compiled.js'
 
     %}

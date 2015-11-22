@@ -2,11 +2,15 @@ angular
     .module('ml')
     .factory('DashboardFactory', DashboardFactory);
 
-DashboardFactory.$inject = [];
+DashboardFactory.$inject = ['$http'];
 
-function DashboardFactory() {
-    var multiline = `test`;
+function DashboardFactory($http) {
+    var self = this;
 
-    let test2 = `${multiline} test 888`;
-    console.log(test2);
+    self.send = function (selected) {
+        console.info(selected)
+        //return $http.post("", selected).then(() => console.info("queued"));
+    };
+
+    return self;
 }
