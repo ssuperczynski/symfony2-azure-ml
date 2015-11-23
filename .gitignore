@@ -1,19 +1,36 @@
-/app/bootstrap.php.cache
+# Cache and logs (Symfony2)
 /app/cache/*
-!app/cache/.gitkeep
-/app/config/parameters.yml
 /app/logs/*
+!app/cache/.gitkeep
 !app/logs/.gitkeep
-/app/phpunit.xml
-/bin/
-/composer.phar
+
+# Cache and logs (Symfony3)
+/var/cache/*
+/var/logs/*
+!var/cache/.gitkeep
+!var/logs/.gitkeep
+
+# Parameters
+/app/config/parameters.yml
+/app/config/parameters.ini
+
+# Managed by Composer
+/app/bootstrap.php.cache
+/var/bootstrap.php.cache
+/bin/*
+!bin/console
+!bin/symfony_requirements
 /vendor/
+
+# Assets and user uploads
 /web/bundles/
-/web/css/
-/web/js/
-/web/fonts/
+/web/uploads/
+/web/css
+/web/js
+
+node_modules
+
 .idea
-node_modules/
 
 bower_components/
 /src/MainBundle/Resources/public/js/compiled
