@@ -1,9 +1,17 @@
+## VIEWS
 mushroom.view:
     path:     /
     defaults: { _controller: MainBundle:Default:mushroom }
+
 shop.view:
     path:     /shop
     defaults: { _controller: MainBundle:Default:shop }
+
+wine.view:
+    path:     /shop
+    defaults: { _controller: MainBundle:Default:wine }
+
+## PRODUCERS
 producer.send.mushrooms:
     path:     /mushrooms
     defaults: { _controller: MainBundle:Mushroom:send }
@@ -12,4 +20,9 @@ producer.send.mushrooms:
 producer.send.shops:
     path:     /shops
     defaults: { _controller: MainBundle:Shop:send }
+    methods:  [PUT]
+
+producer.send.wine:
+    path:     /wines
+    defaults: { _controller: MainBundle:Wine:send }
     methods:  [PUT]

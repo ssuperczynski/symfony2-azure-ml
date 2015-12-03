@@ -1,0 +1,34 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <div ng-controller="WineCtrl">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h1 class="page-header">Wines</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="well bs-component">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="wine in wines">
+
+                            <td><h4>[[ $index + 1 ]]</h4></td>
+
+                        </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr></tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+{% endblock %}

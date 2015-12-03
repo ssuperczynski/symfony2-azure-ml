@@ -24,6 +24,10 @@ old_sound_rabbit_mq:
             connection:       default
             queue_options: { name: 'shop', durable: true }
             exchange_options: { name: 'shop', type: direct }
+        wine_queue:
+            connection:       default
+            queue_options: { name: 'wine', durable: true }
+            exchange_options: { name: 'wine', type: direct }
     consumers:
         save_mushroom:
             connection:       default
@@ -34,4 +38,9 @@ old_sound_rabbit_mq:
             connection:       default
             exchange_options: { name: 'shop', type: direct }
             queue_options:    { name: 'shop' }
+            callback:         save_shop
+        save_wine:
+            connection:       default
+            exchange_options: { name: 'wine', type: direct }
+            queue_options:    { name: 'wine' }
             callback:         save_shop

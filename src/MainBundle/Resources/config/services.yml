@@ -16,3 +16,12 @@ services:
         class: MainBundle\Service\ShopSaveService
         arguments:
             - @doctrine.orm.entity_manager
+
+    wine_queue:
+        class: MainBundle\Service\WineQueueService
+        arguments:
+            - @old_sound_rabbit_mq.wine_queue_producer
+    save_wine:
+        class: MainBundle\Service\WineSaveService
+        arguments:
+            - @doctrine.orm.entity_manager
