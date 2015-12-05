@@ -8,7 +8,7 @@ shop.view:
     defaults: { _controller: MainBundle:Default:shop }
 
 wine.view:
-    path:     /shop
+    path:     /wine
     defaults: { _controller: MainBundle:Default:wine }
 
 ## PRODUCERS

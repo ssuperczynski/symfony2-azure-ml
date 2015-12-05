@@ -82,7 +82,7 @@
                             <td>
                                 <h4>
                                     <span class="label"
-                                          ng-class="(shop.result | number) > (shop.incomeUSD | number) ? 'label-success' : 'label-warning' ">
+                                          ng-class="(shop.result | number) < (shop.incomeUSD | number) ? 'label-success' : 'label-warning' ">
                                         [[ shop.result | currency:"$":0 ]]
                                     </span>
                                 </h4>

@@ -14,18 +14,103 @@
                         <thead>
                         <tr>
                             <th>#</th>
-
+                            <th>fixed Acidity</th>
+                            <th>volatile Acidity</th>
+                            <th>citric Acidity</th>
+                            <th>residual Sugar</th>
+                            <th>chlorides</th>
+                            <th>free Sugar</th>
+                            <th>total Sugar</th>
+                            <th>density</th>
+                            <th>pH</th>
+                            <th>sulphates</th>
+                            <th>alcohol</th>
+                            <th>quality</th>
+                            <th>Result</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr ng-repeat="wine in wines">
-
                             <td><h4>[[ $index + 1 ]]</h4></td>
-
+                            <td><h4>[[ wine.fixedAcidity ]]</h4></td>
+                            <td><h4>[[ wine.volatileAcidity ]]</h4></td>
+                            <td><h4>[[ wine.citricAcidity ]]</h4></td>
+                            <td><h4>[[ wine.residualSugar ]]</h4></td>
+                            <td><h4>[[ wine.chlorides ]]</h4></td>
+                            <td><h4>[[ wine.freeSugar ]]</h4></td>
+                            <td><h4>[[ wine.totalSugar ]]</h4></td>
+                            <td><h4>[[ wine.density ]]</h4></td>
+                            <td><h4>[[ wine.pH ]]</h4></td>
+                            <td><h4>[[ wine.sulphates ]]</h4></td>
+                            <td><h4>[[ wine.alcohol ]]</h4></td>
+                            <td><h4>[[ wine.quality ]]</h4></td>
+                            <td>
+                                <h4>
+                                    <span class="label"
+                                          ng-class="(wine.result) > (wine.quality) ? 'label-success' : 'label-warning' ">
+                                        [[ wine.result ]]
+                                    </span>
+                                </h4>
+                            </td>
                         </tr>
                         </tbody>
                         <tfoot>
-                            <tr></tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <input class="form-control" type="number" placeholder="fixedAcidity"
+                                       ng-model="selected.fixedAcidity"/>
+                            </td>
+                            <td>
+                                <input class="form-control" type="number" placeholder="volatileAcidity"
+                                       ng-model="selected.volatileAcidity"/>
+                            </td>
+                            <td>
+                                <input class="form-control" type="number" placeholder="citricAcidity"
+                                       ng-model="selected.citricAcidity"/>
+                            </td>
+                            <td>
+                                <input class="form-control" type="number" placeholder="residualSugar"
+                                       ng-model="selected.residualSugar"/>
+                            </td>
+                            <td>
+                                <input class="form-control" type="number" placeholder="chlorides"
+                                       ng-model="selected.chlorides"/>
+                            </td>
+                            <td>
+                                <input class="form-control" type="number" placeholder="freeSugar"
+                                       ng-model="selected.freeSugar"/>
+                            </td>
+                            <td>
+                                <input class="form-control" type="number" placeholder="totalSugar"
+                                       ng-model="selected.totalSugar"/>
+                            </td>
+                            <td>
+                                <input class="form-control" type="number" placeholder="density"
+                                       ng-model="selected.density"/>
+                            </td>
+                            <td>
+                                <input class="form-control" type="number" placeholder="pH"
+                                       ng-model="selected.pH"/>
+                            </td>
+                            <td>
+                                <input class="form-control" type="number" placeholder="sulphates"
+                                       ng-model="selected.sulphates"/>
+                            </td>
+                            <td>
+                                <input class="form-control" type="number" placeholder="alcohol"
+                                       ng-model="selected.alcohol"/>
+                            </td>
+                            <td>
+                                <input class="form-control" type="number" placeholder="quality"
+                                       ng-model="selected.quality"/>
+                            </td>
+                            <td>
+                                <button class="btn btn-primary btn-raised" ng-click="send(selected)">
+                                    Check
+                                </button>
+                            </td>
+                        </tr>
                         </tfoot>
                     </table>
                 </div>
