@@ -3,8 +3,8 @@ old_sound_rabbit_mq:
         default:
             host:     127.0.0.1
             port:     5672
-            user:     admin
-            password: pass
+            user:     guest
+            password: guest
             vhost:    '/'
             lazy:     false
 #            connection_timeout: 3
