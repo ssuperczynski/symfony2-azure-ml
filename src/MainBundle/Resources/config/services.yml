@@ -1,1 +1,27 @@
 services:
+    mushroom_queue:
+        class: MainBundle\Service\MushroomQueueService
+        arguments:
+            - @old_sound_rabbit_mq.mushroom_queue_producer
+    save_mushroom:
+        class: MainBundle\Service\MushroomSaveService
+        arguments:
+            - @doctrine.orm.entity_manager
+
+    shop_queue:
+        class: MainBundle\Service\ShopQueueService
+        arguments:
+            - @old_sound_rabbit_mq.shop_queue_producer
+    save_shop:
+        class: MainBundle\Service\ShopSaveService
+        arguments:
+            - @doctrine.orm.entity_manager
+
+    wine_queue:
+        class: MainBundle\Service\WineQueueService
+        arguments:
+            - @old_sound_rabbit_mq.wine_queue_producer
+    save_wine:
+        class: MainBundle\Service\WineSaveService
+        arguments:
+            - @doctrine.orm.entity_manager

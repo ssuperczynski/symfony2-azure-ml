@@ -1,0 +1,170 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <div ng-controller="ShopCtrl">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h1 class="page-header">Shops</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="well bs-component">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>City</th>
+                            <th>Street</th>
+                            <th>Population</th>
+                            <th>Street entrance</th>
+                            <th>Bus stop</th>
+                            <th>Price</th>
+                            <th>Gas Station</th>
+                            <th>Shop 100m</th>
+                            <th>Shop 500m</th>
+                            <th>Parking</th>
+                            <th>Income USD</th>
+                            <th>Result USD</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="shop in shops">
+
+                            <td><h4>[[ $index + 1 ]]</h4></td>
+                            <td>
+                                <h4>[[ shop.city ]]</h4>
+                            </td>
+                            <td>
+                                <h4>[[shop.street]] [[shop.streetNr]]</h4>
+                            </td>
+                            <td>
+                                <h4>[[shop.cityPopulation]]</h4>
+                            </td>
+                            <td>
+                                <h4>
+                                    <span ng-show="shop.hasStreetEntrance">YES</span>
+                                    <span ng-hide="shop.hasStreetEntrance">NO</span>
+                                </h4>
+                            </td>
+                            <td>
+                                <h4>
+                                    <span ng-show="shop.hasBusStop">YES</span>
+                                    <span ng-hide="shop.hasBusStop">NO</span>
+                                </h4>
+                            </td>
+                            <td>
+                                <h4>[[ shop.priceSq ]]</h4>
+                            </td>
+                            <td>
+                                <h4>
+                                    <span ng-bind="shop.hasGasStation == 'true' ? 'YES' : 'NO' "></span>
+                                </h4>
+                            </td>
+                            <td>
+                                <h4>
+                                    <span ng-bind="shop.distanceAnotherShop100m == 'true' ? 'YES' : 'NO' "></span>
+                                </h4>
+                            </td>
+                            <td>
+                                <h4>
+                                    <span ng-bind="shop.distanceAnotherShop500m == 'true' ? 'YES' : 'NO' "></span>
+                                </h4>
+                            </td>
+                            <td>
+                                <h4>
+                                    <span ng-bind="shop.hasParking == 'true' ? 'YES' : 'NO' "></span>
+                                </h4>
+                            </td>
+                            <td>
+                                <h4>[[ shop.incomeUSD | currency:"$":0 ]]</h4>
+                            </td>
+                            <td>
+                                <h4>
+                                    <span class="label"
+                                          ng-class="(shop.result | number) < (shop.incomeUSD | number) ? 'label-success' : 'label-warning' ">
+                                        [[ shop.result | currency:"$":0 ]]
+                                    </span>
+                                </h4>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="well bs-component">
+                    <form class="form-horizontal">
+                        <fieldset>
+                            <input class="form-control" type="text" placeholder="City"
+                                    ng-model="selected.city" />
+                            <input class="form-control" type="text" placeholder="Stret"
+                                   ng-model="selected.street" />
+                            <input class="form-control" type="number" placeholder="Nr"
+                                   ng-model="selected.streetNr" />
+                            <input class="form-control" type="number" placeholder="Population"
+                                   ng-model="selected.cityPopulation" />
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" ng-model="selected.hasStreetEntrance">
+                                        <span class="checkbox-material">
+                                            <span class="check"></span>
+                                        </span> Street entrance
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" ng-model="selected.hasBusStop">
+                                        <span class="checkbox-material">
+                                            <span class="check"></span>
+                                        </span> Bus stop
+                                </label>
+                            </div>
+                            <input class="form-control" type="number" placeholder="Price per square"
+                                   ng-model="selected.priceSq" />
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" ng-model="selected.hasGasStation">
+                                        <span class="checkbox-material">
+                                            <span class="check"></span>
+                                        </span> Gas station
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" ng-model="selected.distanceAnotherShop100m">
+                                        <span class="checkbox-material">
+                                            <span class="check"></span>
+                                        </span> Another shop 100m
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" ng-model="selected.distanceAnotherShop500m">
+                                        <span class="checkbox-material">
+                                            <span class="check"></span>
+                                        </span> Another shop 500m
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" ng-model="selected.hasParking">
+                                        <span class="checkbox-material">
+                                            <span class="check"></span>
+                                        </span> Parking
+                                </label>
+                            </div>
+                            <input class="form-control" type="number" placeholder="Income USD"
+                                   ng-model="selected.incomeUSD" />
+                            <button class="btn btn-default btn-raised" ng-click="send(selected)">
+                                Check
+                            </button>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,10 +1,10 @@
 {
-  "name": "surveyapp",
+  "name": "AzureML",
   "version": "0.1",
   "authors": [
     "ssuperczynski <s.superczynski@gmail.com>"
   ],
-  "description": "SurveyApp",
+  "description": "",
   "main": "",
   "moduleType": [
     "es6"
@@ -25,6 +25,8 @@
     "angular": "~1.4.7",
     "angular-route": "~1.4.7",
     "ng-notify": "~0.7.1",
-    "bootstrap-material-design": "~0.4.4"
+    "bootstrap-material-design": "~0.4.4",
+    "firebase": "~2.3.2",
+    "angularfire": "~1.1.3"
   }
 }

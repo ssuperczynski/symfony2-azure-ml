@@ -1,4 +1,4 @@
-SurveyApp
+AzureML
 =======
 
 ###Instalation
