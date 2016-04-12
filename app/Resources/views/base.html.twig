@@ -25,7 +25,7 @@
         mixpanel.init("35618f9c5022537908f30246b6814f2e");</script>
     <!-- end Mixpanel -->
 </head>
-<body ng-app="ml">
+<body ng-app="surveyapp">
 <div id="wrapper">
     <nav class="navbar" role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
@@ -35,19 +35,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ path('mushroom.view') }}">AzureML</a>
+            <a class="navbar-brand" href="{{ path('dashboard.view') }}">SurveyApp</a>
         </div>
         <div class="sidebar" role="navigation">
             <div class="sidebar-nav" style="margin-top: 10px;">
                 <ul class="nav" id="side-menu">
                     <li>
-                        <a href="{{ path('mushroom.view') }}">Mushrooms</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('shop.view') }}">Shops</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('wine.view') }}">Wines</a>
+                        <a href="{{ path('dashboard.view') }}">Dashboard</a>
                     </li>
                 </ul>
             </div>
@@ -64,8 +58,6 @@
     '%kernel.root_dir%/../bower_components/angular/angular.js'
     '%kernel.root_dir%/../bower_components/ng-notify/dist/ng-notify.min.js'
     '%kernel.root_dir%/../bower_components/bootstrap-material-design/dist/js/material.js'
-    '%kernel.root_dir%/../bower_components/firebase/firebase.js'
-    '%kernel.root_dir%/../bower_components/angularfire/dist/angularfire.js'
     'js/compiled/angular-compiled.js'
 
     %}

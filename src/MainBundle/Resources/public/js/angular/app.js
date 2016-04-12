@@ -1,10 +1,9 @@
 (function () {
     'use strict';
 
-    var app = angular.module('ml', [
+    var app = angular.module('surveyapp', [
         'configuration',
-        'ngNotify',
-        'firebase'
+        'ngNotify'
     ]);
 
     app.config(['$interpolateProvider', function ($interpolateProvider) {
